@@ -12,8 +12,7 @@ async function runAutomation() {
     // Launch Chrome browser
     const browser = await puppeteer.launch({
         headless: true, // Set to true if you don't want to see the browser
-        args: ['--no-sandbox'],
-        executablePath: '/usr/bin/chromium-browser' // Common path on Render
+        args: ['--no-sandbox']
     });
     
     // Open new page
