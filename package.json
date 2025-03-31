@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "apt-get update && apt-get install -y chromium"
   },
   "keywords": [],
   "author": "",
