@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary: #0b57d0;
+    --text: #1f1f1f;
+}
+
+body {
+    font-family: 'DM Sans';
+    background: aliceblue;
+    color: var(--text);
+}
+
+.icon {
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.ac {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    height: 55px;
+    border: 1px solid rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    background: #fff;
+}
+
+.servers {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    gap: 10px;
+}
+
+.servers button {
+    outline: none;
+    flex: 1;
+    border: 1px solid rgba(0,0,0,0.12);
+    height: 40px;
+    background: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'DM Sans';
+}
+
+button.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: transparent;
+    font-weight: 500;
+}
+
+.user, .actions {
+    padding: 15px;
+}
+
+.user-input {
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.user-input h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.label {
+    display: flex;
+}
+
+.label p {
+    font-size: 13px;
+    flex: 1;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    opacity: .7;
+}
+
+.inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.inputs input {
+    outline: none;
+    flex: 1;
+    height: 45px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 2px solid #eee;
+    background: #f1f1f1;
+    font-family: 'DM Sans';
+    font-size: 15px;
+    transition: .3s;
+}
+
+.user-input input:hover {
+    border: 2px solid var(--primary);
+    transition: .3s;
+}
+
+.actions {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.cta button {
+    outline: none;
+    flex: 1;
+    border: none;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.follow {
+    background: #0095f6;
+    color: #fff;
+}
+
+.like {
+    background: #ff3040;
+    color: #fff;
+}
+
+.terminals {
+    padding: 0 15px;
+}
+
+.terminal {
+    background: #222;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.terminal h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.view {
+    background: #444;
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    opacity: .8;
+    font-weight: 300;
+}
+
+.view p:before {
+    content: '>';
+    margin-right: 6px;
+}
+
+.
