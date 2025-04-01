@@ -89,6 +89,7 @@ async function follow(s, username, password, instaID) {
         await page.click(server.submitBtn)
     } catch (error) {
         console.error('Error:', error)
+        return 'Server error... Please try again.'
     } finally {
         await new Promise(r => setTimeout(r, 3000))
         await browser.close();
