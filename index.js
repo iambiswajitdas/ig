@@ -104,9 +104,10 @@ async function follow(s, username, password, instaID, sendUpdate) {
         await page.click(server.submitBtn)
         sendUpdate('Sending followers...')
         await new Promise(r => setTimeout(r, 3000))
-        await browser.close();
+        await browser.close()
         return 'Task completed.'
     } catch (error) {
+        await browser.close()
         console.error('Error:', error)
         return 'Server error. Please try again...'
     }
