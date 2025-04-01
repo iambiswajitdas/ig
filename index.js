@@ -69,7 +69,7 @@ async function follow(s, username, password, instaID, sendUpdate) {
     }
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox']
     })
     
