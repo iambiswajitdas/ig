@@ -92,7 +92,10 @@ async function follow(s, username, password, instaID, sendUpdate) {
         })
 
         if (counterValue <=0) {
+            await browser.close()
             return 'No follower credit left. Try later...'
+        } else {
+            sendUpdate(`You have ${counterValue} credits`)
         }
 
         await page.type(server.instaIdInput, instaID)
