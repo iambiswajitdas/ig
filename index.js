@@ -84,8 +84,6 @@ async function follow(s, username, password, instaID, sendUpdate) {
         await page.waitForNavigation({waitUntil: 'networkidle0'})
         sendUpdate('Logged in...')
         await page.goto(server.followPage, {waitUntil: 'networkidle0'})
-        await page.type(server.instaIdInput, instaID)
-        await page.click(server.idClick)
 
         sendUpdate('Checking follower credit...')
         const counterValue = await page.evaluate(() => {
@@ -97,6 +95,8 @@ async function follow(s, username, password, instaID, sendUpdate) {
             return 'No follower credit left. Try later...'
         }
 
+        await page.type(server.instaIdInput, instaID)
+        await page.click(server.idClick)
         sendUpdate(`Looking for '${instaID}'`)
         await page.waitForNavigation({waitUntil: 'networkidle0'})
         sendUpdate(`Found Instagram ID: ${instaID}`)
