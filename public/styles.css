@@ -41,6 +41,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 15px;
+    padding-bottom: 0;
     gap: 10px;
 }
 
@@ -82,10 +83,10 @@ button.active {
 }
 
 .label p {
-    font-size: 13px;
+    font-size: 12px;
     flex: 1;
     margin-bottom: 6px;
-    margin-left: 8px;
+    margin-left: 9px;
     opacity: .7;
 }
 
@@ -93,19 +94,19 @@ button.active {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
 }
 
 .inputs input {
     outline: none;
-    flex: 1;
-    height: 45px;
+    width: 50%;
+    height: 40px;
     padding: 0 10px;
     border-radius: 10px;
     border: 2px solid #eee;
     background: #f1f1f1;
     font-family: 'DM Sans';
-    font-size: 15px;
+    font-size: 13px;
     transition: .3s;
 }
 
@@ -117,7 +118,7 @@ button.active {
 .actions {
     position: absolute;
     width: 100%;
-    bottom: 10px;
+    bottom: 0;
 }
 
 .cta {
@@ -125,14 +126,14 @@ button.active {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    gap: 10px;
+    gap: 5px;
 }
 
 .cta button {
     outline: none;
-    flex: 1;
+    width: 50%;
     border: none;
-    height: 40px;
+    height: 45px;
     border-radius: 10px;
     cursor: pointer;
     font-family: 'DM Sans';
@@ -140,7 +141,7 @@ button.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-weight: 500;
 }
 
@@ -176,14 +177,14 @@ button.active {
     padding: 15px;
     border-radius: 10px;
     font-family: monospace;
-    font-size: 14px;
+    font-size: 12px;
     opacity: .8;
     font-weight: 300;
+    height: 180px;
+    overflow: auto;
 }
 
 .view p:before {
     content: '>';
     margin-right: 6px;
 }
-
-.
