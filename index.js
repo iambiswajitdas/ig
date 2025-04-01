@@ -1,71 +1,111 @@
-const express = require('express');
-const puppeteer = require('puppeteer');
-const path = require('path');
+const express = require('express')
+const puppeteer = require('puppeteer')
+const path = require('path')
+const app = express()
+const port = process.env.PORT || 3000
 
-const app = express();
-const port = process.env.PORT || 3000;
+// server links
+let server1 = {
+    loginURL: `https://canlitakipci.com/memberLogin`,
+    usernameInput: `input[name="username"]`,
+    passwordInput: `input[name="password"]`,
+    loginBtn: `#login_insta`,
+    followPage: `https://canlitakipci.com/tools/send-follower`,
+    instaIdInput: `input[name="username"]`,
+    idClick: `.btn-success`,
+    valueInput: `input[name="adet"]`,
+    submitBtn: `#formTakipSubmitButton`
+}
 
-// Serve static files from 'public'
+let server2 = {
+    loginURL: `https://takipcikrali.com/login`,
+    usernameInput: `input[name="username"]`,
+    passwordInput: `input[name="password"]`,
+    loginBtn: `#login_insta`,
+    followPage: `https://takipcikrali.com/tools/send-follower`,
+    instaIdInput: `input[name="username"]`,
+    idClick: `.btn-success`,
+    valueInput: `input[name="adet"]`,
+    submitBtn: `#formTakipSubmitButton`
+}
+
+let server3 = {
+    loginURL: `https://takipcimx.net/login`,
+    usernameInput: `input[name="username"]`,
+    passwordInput: `input[name="password"]`,
+    loginBtn: `#login_insta`,
+    followPage: `https://takipcimx.net/tools/send-follower`,
+    instaIdInput: `input[name="username"]`,
+    idClick: `.btn-success`,
+    valueInput: `input[name="adet"]`,
+    submitBtn: `#formTakipSubmitButton`
+}
+
+let server4 = {
+    loginURL: `https://platintakipci.com/member`,
+    usernameInput: `input[name="username"]`,
+    passwordInput: `input[name="password"]`,
+    loginBtn: `#login_insta`,
+    followPage: `https://takipcimx.net/tools/send-follower`,
+    instaIdInput: `input[name="username"]`,
+    idClick: `.btn-success`,
+    valueInput: `input[name="adet"]`,
+    submitBtn: `#formTakipSubmitButton`
+}
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-async function runAutomation() {
-    // Launch Chrome browser
+async function follow(s, username, password, instaID) {
+    let server = {}
+
+    if(s == 1) {
+        server = server1
+    } else if(s == 2) {
+        server = server2
+    } else if(s == 3) {
+        server = server3
+    } else {
+        return 'Server not found'
+    }
+
     const browser = await puppeteer.launch({
-        headless: true, // Set to true if you don't want to see the browser
+        headless: true,
         args: ['--no-sandbox']
-    });
+    })
     
-    // Open new page
-    const page = await browser.newPage();
+    const page = await browser.newPage()
     
     try {
-        // 1. Go to initial URL
-        await page.goto('https://canlitakipci.com/memberLogin', {
-            waitUntil: 'networkidle0'
-        });
-        
-        // 2. Login
-        await page.type('input[name="username"]', 'arunabanik3'); // Replace with actual selector and username
-        await page.type('input[name="password"]', 'Nokia@6300'); // Replace with actual selector and password
-        await page.click('#login_insta'); // Replace with actual login button selector
-        
-        // Wait for navigation after login
-        await page.waitForNavigation({
-            waitUntil: 'networkidle0'
-        });
-        
-        // 3. Navigate to specific page
-        await page.goto('https://canlitakipci.com/tools/send-follower', {
-            waitUntil: 'networkidle0'
-        });
-        
-        // 4. Click buttons
-        await page.type('input[name="username"]', 'heybiswajit');
-        await page.click('.btn-success');
-
-        await page.waitForNavigation({
-            waitUntil: 'networkidle0'
-        });
-
-        await page.type('input[name="adet"]', '600');
-        await page.click('#formTakipSubmitButton');
-
-        console.log('Task completed successfully!');
-        
+        await page.goto(server.loginURL, {waitUntil: 'networkidle0'})
+        await page.type(server.usernameInput, username)
+        await page.type(server.passwordInput, password)
+        await page.click(server.loginBtn)
+        await page.waitForNavigation({waitUntil: 'networkidle0'})
+        await page.goto(server.followPage, {waitUntil: 'networkidle0'})
+        await page.type(server.instaIdInput, instaID)
+        await page.click(server.idClick)
+        await page.waitForNavigation({waitUntil: 'networkidle0'})
+        await page.type(server.valueInput, '1000')
+        await page.click(server.submitBtn)
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error:', error)
     } finally {
-        //await browser.close();
+        await new Promise(r => setTimeout(r, 3000))
+        await browser.close();
+        return 'Task complete...'
     }
 }
 
-// Endpoint to trigger automation
-app.get('/run', async (req, res) => {
-    const result = await runAutomation();
-    res.send(result);
-});
+app.get('/follow', async (req, res) => {
+    const server = req.query.server
+    const username = req.query.username
+    const password = req.query.password
+    const instaID = req.query.instaID
 
-// Start server
+    const result = await follow(server, username, password, instaID)
+    res.send(result)
+})
+
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+    console.log(`Server running on port ${port}`)
+})
