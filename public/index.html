@@ -1,28 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Automation Runner</title>
-    <style>
-        button { padding: 10px 20px; margin: 5px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="styles.css">
+    <title>Biswajit IG Service</title>
 </head>
 <body>
-    <h1>Run Automation</h1>
-    <button onclick="runAutomation()">Run Task</button>
-    <p id="result"></p>
+    <header><span class="icon" style="margin-right: 5px;">bolt</span>Biswajit IG Services</header>
 
-    <script>
-        async function runAutomation() {
-            const result = document.getElementById('result');
-            result.textContent = 'Running...';
-            try {
-                const response = await fetch('/run');
-                const text = await response.text();
-                result.textContent = text;
-            } catch (error) {
-                result.textContent = 'Error: ' + error.message;
-            }
-        }
-    </script>
+    <div class="servers">
+        <button class="active" onclick="setServer(1)">Server 1</button>
+        <button onclick="setServer(2)">Server 2</button>
+        <button onclick="setServer(3)">Server 3</button>
+        <!-- <button onclick="setServer(4)">Server 4</button> -->
+    </div>
+
+    <div class="user">
+        <div class="user-input">
+
+            <h1 class="ac"><span class="icon" style="margin-right: 5px;">account_circle</span>Credentials</h1>
+
+            <div class="label">
+                <p>Username</p>
+                <p>Password</p>
+            </div>
+
+            <div class="inputs">
+                <input type="text" name="user" id="user" placeholder="Username" value="arunabanik3" required>
+                <input type="password" name="pass" id="pass" placeholder="Password" value="Nokia@6300" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="terminals">
+        <div class="terminal">
+            <h1 class="ac"><span class="icon" style="margin-right: 5px;">terminal</span>Terminal</h1>
+
+            <div class="view">
+                <p>Biswajit server intialized...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <div class="user-input">
+
+            <h1 class="ac"><span class="icon" style="margin-right: 5px;">motion_play</span>Actions</h1>
+
+            <div class="label">
+                <p>Instagram ID</p>
+                <p>Post or Reel Link</p>
+            </div>
+
+            <div class="inputs">
+                <input type="text" name="id" id="id" placeholder="Instagram ID" value="heybiswajit" required>
+                <input type="text" name="post" id="post" placeholder="Post Link" value="">
+            </div>
+
+            <div class="cta">
+                <button class="follow" onclick="follow()"><span class="icon">person_add</span>Follow</button>
+                <button class="like"><span class="icon">favorite</span>Like</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
 </body>
 </html>
