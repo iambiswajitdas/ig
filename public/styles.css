@@ -42,7 +42,7 @@ header {
     justify-content: space-between;
     padding: 15px;
     padding-bottom: 0;
-    gap: 10px;
+    gap: 5px;
 }
 
 .servers button {
