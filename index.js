@@ -42,11 +42,11 @@ let server3 = {
 }
 
 let server4 = {
-    loginURL: `https://platintakipci.com/member`,
+    loginURL: `https://fastfollow.in/member`,
     usernameInput: `input[name="username"]`,
     passwordInput: `input[name="password"]`,
     loginBtn: `#login_insta`,
-    followPage: `https://takipcimx.net/tools/send-follower`,
+    followPage: `https://fastfollow.in/tools/send-follower`,
     instaIdInput: `input[name="username"]`,
     idClick: `.btn-success`,
     valueInput: `input[name="adet"]`,
@@ -64,6 +64,8 @@ async function follow(s, username, password, instaID, sendUpdate) {
         server = server2
     } else if(s == 3) {
         server = server3
+    } else if(s == 4) {
+        server = server4
     } else {
         return 'Server not found'
     }
