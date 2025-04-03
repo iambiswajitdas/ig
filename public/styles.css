@@ -196,3 +196,40 @@ button.active {
     content: '>';
     margin-right: 6px;
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #111;
+        color: #eee;
+    }
+
+    header {
+        background: #222;
+    }
+
+    .servers button {
+        background: transparent;
+        color: #eee;
+        border: 2px solid #444;
+    }
+
+    button.active {
+        background: #220e96;
+        color: #eee;
+        border-color: transparent;
+    }
+
+    .user-input {
+        background: #2f2f2f;
+    }
+
+    .inputs input {
+        background: #444;
+        border: 2px solid #555;
+        color: #eee;
+    }
+
+    .inputs input:hover {
+        border: 2px solid #ffffff60;
+    }
+}
