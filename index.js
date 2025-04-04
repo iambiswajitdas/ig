@@ -146,7 +146,7 @@ async function like(s, username, password, postLink, sendUpdate) {
     }
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox']
     })
     
