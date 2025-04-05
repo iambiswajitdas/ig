@@ -156,11 +156,19 @@ button.active {
 .follow {
     background: #0095f6;
     color: #fff;
+    transition: .3s;
 }
 
 .like {
     background: #ff3040;
     color: #fff;
+    transition: .3s;
+}
+
+.follow:disabled, .like:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transition: .3s;
 }
 
 .terminals {
