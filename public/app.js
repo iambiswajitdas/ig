@@ -13,7 +13,8 @@ buttons.forEach(btn => {
 
 function setServer(val) {server = val}
 
-async function follow() {
+async function follow(e) {
+    e.disabled = true
     output.innerHTML = `<p>Started Server${server}</p>`
 
     let username = document.getElementById('user').value
@@ -23,6 +24,7 @@ async function follow() {
 
     if (!username || !password || !instaID) {
         output.innerHTML += '<p>Please enter both username and password and ID</p>';
+        e.disabled = false
         return;
     }
 
@@ -36,15 +38,18 @@ async function follow() {
         console.log(error)
         output.innerHTML += `<p>Some error occured. Try again...</p>`;
         eventSource.close()
+        e.disabled = false
     }
 
     eventSource.addEventListener('done', () => {
         output.innerHTML += `<p>:)</p>`
         eventSource.close()
+        e.disabled = false
     })
 }
 
-async function like() {
+async function like(e) {
+    e.disabled = true
     output.innerHTML = `<p>Started Server${server}</p>`
 
     let username = document.getElementById('user').value
@@ -52,7 +57,8 @@ async function like() {
     let postLink = document.getElementById('post').value
 
     if (!username || !password || !postLink) {
-        output.innerHTML += '<p>Please enter both username and password and Link</p>';
+        output.innerHTML += '<p>Please enter both username and password and Link</p>'
+        e.disabled = false
         return;
     }
 
@@ -66,10 +72,12 @@ async function like() {
         console.log(error)
         output.innerHTML += `<p>Some error occured. Try again...</p>`;
         eventSource.close()
+        e.disabled = false
     }
 
     eventSource.addEventListener('done', () => {
         output.innerHTML += `<p>:)</p>`
         eventSource.close()
+        e.disabled = false
     })
 }
